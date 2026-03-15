@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Wagner IT-Solutions – Ihr IT-Dienstleister aus Wien. Microsoft 365, Cloud Computing, Webhosting, SEO und Digital Marketing aus einer Hand.">
+<title>Wagner IT-Solutions — Digitale Infrastruktur die funktioniert.</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0a0a0a;
+  --off-black: #101010;
+  --charcoal: #171717;
+  --dark-gray: #222;
+  --mid-gray: #555;
+  --light-gray: #999;
+  --off-white: #e4e4e4;
+  --cream: #f0f0f0;
+  --white: #fafafa;
+  --teal: #1aa3b8;
+  --teal-bright: #22c5de;
+  --teal-dim: rgba(26,163,184,0.08);
+  --teal-border: rgba(26,163,184,0.25);
+  --teal-glow: rgba(26,163,184,0.12);
+  --heading: 'Inter', -apple-system, sans-serif;
+  --body: 'Space Grotesk', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --border: rgba(255,255,255,0.06);
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: var(--body);
+  background: var(--black);
+  color: var(--off-white);
+  overflow-x: hidden;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+::selection { background: var(--teal); color: var(--black); }
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--teal);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.15s ease, opacity 0.2s;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+.cursor.hovering {
+  transform: translate(-50%, -50%) scale(2.5);
+  background: var(--teal);
+  opacity: 0.3;
+}
+@media (pointer: coarse) { .cursor { display: none; } }
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 3.5rem;
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.nav-right { display: flex; align-items: center; gap: 3rem; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--teal);
+  padding: 0.6rem 1.5rem;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.nav-cta:hover { background: var(--teal-bright); }
+
+.burger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--white); margin: 5px 0; transition: 0.3s; }
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,10,0.97);
+  z-index: 99;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.mobile-nav a:hover { color: var(--teal); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; height: 60px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .burger { display: block; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3.5rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--heading);
+  font-size: clamp(20rem, 35vw, 40rem);
+  font-weight: 900;
+  color: rgba(255,255,255,0.015);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.05em;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26,163,184,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,163,184,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-top-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideIn 0.8s ease 0.3s forwards;
+  position: relative;
+}
+
+.hero h1 {
+  font-family: var(--heading);
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  max-width: 80%;
+  text-transform: uppercase;
+  position: relative;
+}
+.hero h1 span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60px);
+  animation: wordReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero h1 span:nth-child(1) { animation-delay: 0.4s; }
+.hero h1 span:nth-child(2) { animation-delay: 0.55s; }
+.hero h1 span:nth-child(3) { animation-delay: 0.7s; }
+.hero h1 span:nth-child(4) { animation-delay: 0.85s; }
+.teal { color: var(--teal); }
+
+@keyframes wordReveal { to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { to { opacity: 1; } }
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  opacity: 0;
+  animation: slideIn 1s ease 1.2s forwards;
+  position: relative;
+}
+.hero-desc {
+  max-width: 420px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--light-gray);
+  font-weight: 300;
+}
+.hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+}
+.scroll-line {
+  width: 60px; height: 1px;
+  background: var(--dark-gray);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--teal);
+  animation: scrollLine 2s ease infinite;
+}
+@keyframes scrollLine { 0% { left: -100%; } 100% { left: 100%; } }
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat-item {
+  padding: 2.5rem 3rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: var(--off-black); }
+.stat-item .s-num {
+  font-family: var(--mono);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.stat-item .s-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--mid-gray);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ===== MARQUEE ===== */
+.marquee-strip {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.marquee-inner {
+  display: flex;
+  gap: 2rem;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+.marquee-inner:hover { animation-play-state: paused; }
+.marquee-inner span {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--mid-gray);
+}
+.marquee-inner span em { font-style: normal; color: var(--teal); margin: 0 0.4rem; }
+
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ===== SERVICES — BENTO GRID ===== */
+.services-section {
+  padding: 8rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5rem;
+  gap: 3rem;
+}
+.services-header h2 {
+  font-family: var(--heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+.services-header-right {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: 2px;
+}
+
+.bento-card {
+  background: var(--charcoal);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid transparent;
+}
+.bento-card:hover {
+  background: var(--dark-gray);
+  border-color: var(--teal-border);
+  transform: translateY(-2px);
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.bento-card:hover::before { opacity: 1; }
+
+.bento-card::after {
+  content: attr(data-num);
+  position: absolute;
+  bottom: -10px; right: 15px;
+  font-family: var(--heading);
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.02);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+}
+
+.bento-card .card-tag {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+}
+
+.bento-card h3 {
+  font-family: var(--heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  line-height: 1.1;
+}
+
+.bento-card .card-desc {
+  font-size: 0.85rem;
+  color: var(--mid-gray);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+.card-tags span {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  color: var(--light-gray);
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.bento-card:hover .card-tags span {
+  border-color: var(--teal-border);
+  color: var(--teal);
+}
+
+.card-visual {
+  width: 48px; height: 48px;
+  border: 1px solid var(--teal-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--teal);
+  background: var(--teal-dim);
+  transition: all 0.3s;
+}
+.bento-card:hover .card-visual {
+  background: var(--teal);
+  color: var(--black);
+}
+
+.b-m365 { grid-column: span 7; grid-row: span 2; }
+.b-cloud { grid-column: span 5; grid-row: span 2; }
+.b-web { grid-column: span 5; grid-row: span 2; }
+.b-marketing { grid-column: span 7; grid-row: span 2; }
+
+/* ===== PROCESS ===== */
+.process-section {
+  padding: 8rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.process-header {
+  margin-bottom: 5rem;
+}
+.process-header .section-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+}
+.process-header h2 {
+  font-family: var(--heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+
+.process-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.process-track::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  right: 6px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--teal-border), var(--teal), var(--teal-border));
+  z-index: 0;
+}
+
+.proc-step { padding: 0 2rem; position: relative; z-index: 1; }
+.proc-dot {
+  width: 12px; height: 12px;
+  background: var(--black);
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  transition: all 0.3s;
+}
+.proc-step:hover .proc-dot {
+  background: var(--teal);
+  box-shadow: 0 0 20px var(--teal-glow);
+}
+
+.proc-step .step-num {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.proc-step h3 {
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+}
+.proc-step p {
+  font-size: 0.82rem;
+  color: var(--mid-gray);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ===== ABOUT ===== */
+.about-section {
+  padding: 8rem 3.5rem;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6rem;
+  align-items: start;
+  border-bottom: 1px solid var(--border);
+}
+.about-left .section-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 2rem;
+}
+.about-left h2 {
+  font-family: var(--heading);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--cream);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.about-right { padding-top: 0.5rem; }
+.about-right > p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--light-gray);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.about-right > p strong { color: var(--cream); font-weight: 600; }
+
+.about-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+.acheck {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: var(--light-gray);
+  font-weight: 300;
+}
+.acheck-mark {
+  width: 22px; height: 22px;
+  background: var(--teal-dim);
+  border: 1px solid var(--teal-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: var(--teal);
+  flex-shrink: 0;
+  font-family: var(--mono);
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 3rem;
+  background: rgba(255,255,255,0.04);
+}
+.about-value {
+  padding: 1.8rem 1.5rem;
+  background: var(--black);
+  transition: background 0.3s;
+}
+.about-value:hover { background: var(--off-black); }
+.about-value .val-num {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.03em;
+}
+.about-value h4 {
+  font-family: var(--heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+.about-value p {
+  font-size: 0.72rem;
+  color: var(--mid-gray);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ===== CONTACT ===== */
+.contact-section {
+  padding: 8rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 6rem;
+}
+.contact-section h2 {
+  font-family: var(--heading);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.contact-section .contact-inner > div:first-child > p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--light-gray);
+  font-weight: 300;
+  max-width: 500px;
+  margin-bottom: 3rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 2.5rem;
+  background: var(--teal);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.03em;
+}
+.contact-btn:hover { background: var(--teal-bright); gap: 2rem; }
+.contact-btn svg { transition: transform 0.3s; }
+.contact-btn:hover svg { transform: translateX(4px); }
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 1rem;
+}
+.contact-block h5 {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 0.6rem;
+}
+.contact-block a, .contact-block span {
+  font-size: 1rem;
+  color: var(--cream);
+  font-weight: 400;
+  display: block;
+  transition: color 0.3s;
+}
+.contact-block a:hover { color: var(--teal); }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2.5rem 3.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .footer-logo img { height: 20px; opacity: 0.5; }
+footer p {
+  font-size: 0.7rem;
+  color: var(--mid-gray);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+}
+footer .footer-links { display: flex; gap: 2rem; }
+footer .footer-links a {
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  color: var(--mid-gray);
+  transition: color 0.3s;
+  letter-spacing: 0.05em;
+}
+footer .footer-links a:hover { color: var(--cream); }
+
+/* ===== SCROLL REVEAL ===== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .bento { grid-template-columns: 1fr 1fr; }
+  .b-m365, .b-cloud, .b-web, .b-marketing { grid-column: span 1; grid-row: span 1; }
+}
+@media (max-width: 1024px) {
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .process-track { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .process-track::before { display: none; }
+  .about-section { grid-template-columns: 1fr; gap: 3rem; }
+  .about-values { grid-template-columns: 1fr 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .services-header { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .hero { padding: 0 1.5rem 3.5rem; }
+  .hero h1 { max-width: 100%; }
+  .hero-bottom { flex-direction: column; gap: 2rem; }
+  .stat-item { padding: 1.8rem 1.5rem; }
+  .services-section { padding: 5rem 1.5rem; }
+  .bento { grid-template-columns: 1fr; }
+  .b-m365, .b-cloud, .b-web, .b-marketing { grid-column: span 1; }
+  .process-section { padding: 5rem 1.5rem; }
+  .process-track { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-section { padding: 5rem 1.5rem; }
+  .about-values { grid-template-columns: 1fr 1fr; }
+  .contact-section { padding: 5rem 1.5rem; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="closeMobile()">Leistungen</a>
+  <a href="#about" onclick="closeMobile()">Über uns</a>
+  <a href="#process" onclick="closeMobile()">Vorgehen</a>
+  <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo-dark.png" alt="Wagner IT-Solutions">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#services">Leistungen</a></li>
+      <li><a href="#about">Über uns</a></li>
+      <li><a href="#process">Vorgehen</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="#kontakt" class="nav-cta">Anfragen</a>
+  </div>
+  <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menü">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg-text">W</div>
+  <div class="hero-top-tag">IT-Dienstleister — Wien, Österreich</div>
+  <h1>
+    <span>Digitale</span>
+    <span>Infrastruktur</span><br>
+    <span>die</span>
+    <span class="teal">funktioniert.</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      Von Microsoft 365 über Cloud-Server bis zur Website – wir bauen und betreuen die digitale Basis für Unternehmen, die vorankommen wollen.
+    </p>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar" data-reveal>
+  <div class="stat-item">
+    <div class="s-num">150+</div>
+    <div class="s-label">Aktive Kunden</div>
+  </div>
+  <div class="stat-item">
+    <div class="s-num">12 J.</div>
+    <div class="s-label">Erfahrung</div>
+  </div>
+  <div class="stat-item">
+    <div class="s-num">99.9%</div>
+    <div class="s-label">Uptime</div>
+  </div>
+  <div class="stat-item">
+    <div class="s-num">&lt;2h</div>
+    <div class="s-label">Reaktionszeit</div>
+  </div>
+</div>
+
+<!-- Marquee -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Microsoft 365 <em>—</em> Cloud Computing <em>—</em> Web Hosting <em>—</em> SEO <em>—</em> LinkedIn Marketing <em>—</em> SharePoint <em>—</em> Azure <em>—</em> DNS &amp; SSL <em>—</em> Intune <em>—</em> Entra ID <em>—</em> Branding <em>—</em> Newsletter</span>
+    <span>Microsoft 365 <em>—</em> Cloud Computing <em>—</em> Web Hosting <em>—</em> SEO <em>—</em> LinkedIn Marketing <em>—</em> SharePoint <em>—</em> Azure <em>—</em> DNS &amp; SSL <em>—</em> Intune <em>—</em> Entra ID <em>—</em> Branding <em>—</em> Newsletter</span>
+  </div>
+</div>
+
+<!-- Services — Bento Grid -->
+<section class="services-section" id="services">
+  <div class="services-header" data-reveal>
+    <h2>Was wir für<br><span class="teal">Sie tun.</span></h2>
+    <div class="services-header-right">( 4 ) Kernbereiche</div>
+  </div>
+
+  <div class="bento" data-reveal>
+    <div class="bento-card b-m365" data-num="01">
+      <div>
+        <div class="card-visual">⬡</div>
+        <span class="card-tag">Collaboration &amp; Productivity</span>
+        <h3>Microsoft 365</h3>
+        <p class="card-desc">Wir richten Ihren digitalen Arbeitsplatz ein und betreuen ihn laufend. Von Exchange und Teams über SharePoint bis zu Identity Management mit Entra ID und Intune – sauber konfiguriert, sicher und immer aktuell.</p>
+      </div>
+      <div class="card-tags">
+        <span>Teams</span><span>SharePoint</span><span>OneDrive</span><span>Exchange</span><span>Entra ID</span><span>Intune</span>
+      </div>
+    </div>
+
+    <div class="bento-card b-cloud" data-num="02">
+      <div>
+        <div class="card-visual">◈</div>
+        <span class="card-tag">Server &amp; Security</span>
+        <h3>Cloud &amp;<br>Infrastruktur</h3>
+        <p class="card-desc">Stabile Server. Sichere Daten. Maximale Verfügbarkeit. Cloud-Infrastruktur auf Enterprise-Niveau – mit Backup, Firewall, VPN und 24/7-Monitoring.</p>
+      </div>
+      <div class="card-tags">
+        <span>vServer</span><span>Azure</span><span>Backup</span><span>Firewall</span><span>VPN</span><span>Monitoring</span>
+      </div>
+    </div>
+
+    <div class="bento-card b-web" data-num="03">
+      <div>
+        <div class="card-visual">◎</div>
+        <span class="card-tag">Design &amp; Sichtbarkeit</span>
+        <h3>Web, Hosting<br>&amp; SEO</h3>
+        <p class="card-desc">Ihre digitale Visitenkarte – schnell, sicher, sichtbar. Webdesign, professionelles Hosting, DNS-Management und Suchmaschinenoptimierung für nachhaltigen Traffic.</p>
+      </div>
+      <div class="card-tags">
+        <span>Webdesign</span><span>Hosting</span><span>DNS &amp; SSL</span><span>SEO</span><span>WordPress</span>
+      </div>
+    </div>
+
+    <div class="bento-card b-marketing" data-num="04">
+      <div>
+        <div class="card-visual">◇</div>
+        <span class="card-tag">Strategie &amp; Reichweite</span>
+        <h3>Digital Marketing</h3>
+        <p class="card-desc">LinkedIn-Strategie, Newsletter-Kampagnen und Content-Marketing – wir sorgen dafür, dass Ihre Expertise gesehen wird. Kein Agentur-Sprech, sondern messbare Ergebnisse.</p>
+      </div>
+      <div class="card-tags">
+        <span>LinkedIn</span><span>Newsletter</span><span>Content</span><span>Branding</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process-section" id="process">
+  <div class="process-header" data-reveal>
+    <div class="section-tag">Unser Vorgehen</div>
+    <h2>So arbeiten wir<br><span class="teal">zusammen.</span></h2>
+  </div>
+  <div class="process-track" data-reveal>
+    <div class="proc-step">
+      <div class="proc-dot"></div>
+      <div class="step-num">Schritt 01</div>
+      <h3>Analyse &amp; Beratung</h3>
+      <p>Kostenloser Erstcall – wir hören zu, verstehen Ihre Situation und zeigen ehrlich auf, was Sinn macht.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot"></div>
+      <div class="step-num">Schritt 02</div>
+      <h3>Konzept &amp; Angebot</h3>
+      <p>Klares Angebot mit Festpreisen. Kein Kleingedrucktes, keine Überraschungen.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot"></div>
+      <div class="step-num">Schritt 03</div>
+      <h3>Umsetzung</h3>
+      <p>Schnell, sauber, transparent. Regelmäßige Updates – Sie wissen immer wo es steht.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot"></div>
+      <div class="step-num">Schritt 04</div>
+      <h3>Laufende Betreuung</h3>
+      <p>Wir bleiben als Partner an Ihrer Seite und entwickeln Ihre Infrastruktur weiter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="about">
+  <div class="about-left" data-reveal>
+    <div class="section-tag">Über Wagner IT-Solutions</div>
+    <h2>Kein Konzern.<br><span class="teal">Echter Kontakt.</span></h2>
+  </div>
+  <div class="about-right" data-reveal>
+    <p>
+      <strong>Wagner IT-Solutions</strong> ist der IT-Dienstleister aus Wien für Unternehmen, die digital denken und handeln wollen. Wir vereinen IT-Kompetenz, Cloud-Infrastruktur und Digital Marketing zu einem ganzheitlichen Angebot.
+    </p>
+    <p>
+      Kein anonymes Ticketsystem – sondern feste Ansprechpartner, die Ihr Unternehmen kennen und mitdenken. Direkt, ehrlich und mit echtem Engagement.
+    </p>
+    <div class="about-checks">
+      <div class="acheck"><div class="acheck-mark">✓</div><span>Microsoft-zertifizierter Partner – M365 &amp; Azure</span></div>
+      <div class="acheck"><div class="acheck-mark">✓</div><span>Alles aus einer Hand – IT, Hosting und Marketing</span></div>
+      <div class="acheck"><div class="acheck-mark">✓</div><span>Vor Ort in Wien oder remote – immer erreichbar</span></div>
+      <div class="acheck"><div class="acheck-mark">✓</div><span>Festpreise, keine versteckten Kosten</span></div>
+    </div>
+    <div class="about-values">
+      <div class="about-value">
+        <div class="val-num">150+</div>
+        <h4>Kunden</h4>
+        <p>Die uns vertrauen</p>
+      </div>
+      <div class="about-value">
+        <div class="val-num">12 J.</div>
+        <h4>Erfahrung</h4>
+        <p>In IT &amp; Digital</p>
+      </div>
+      <div class="about-value">
+        <div class="val-num">99.9%</div>
+        <h4>Uptime</h4>
+        <p>Auf unseren Servern</p>
+      </div>
+      <div class="about-value">
+        <div class="val-num">&lt;2h</div>
+        <h4>Response</h4>
+        <p>Bei kritischen Fällen</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="kontakt">
+  <div class="contact-inner">
+    <div data-reveal>
+      <h2>Lassen Sie<br>uns <span class="teal">reden.</span></h2>
+      <p>30 Minuten Erstgespräch – kostenlos, unverbindlich, direkt. Ob Microsoft 365, Cloud-Infrastruktur oder Website – erzählen Sie uns davon.</p>
+      <a href="/cdn-cgi/l/email-protection#533c35353a3036132432343d36217e3a27207d3227" class="contact-btn">
+        Jetzt Termin anfragen
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="contact-right" data-reveal>
+      <div class="contact-block">
+        <h5>E-Mail</h5>
+        <a href="/cdn-cgi/l/email-protection#adc2cbcbc4cec8eddacccac3c8df80c4d9de83ccd9"><span class="__cf_email__" data-cfemail="c6a9a0a0afa5a386b1a7a1a8a3b4ebafb2b5e8a7b2">[email&#160;protected]</span></a>
+      </div>
+      <div class="contact-block">
+        <h5>Telefon</h5>
+        <a href="tel:+43">+43 — — — —</a>
+      </div>
+      <div class="contact-block">
+        <h5>Standort</h5>
+        <span>Wien, Österreich</span>
+      </div>
+      <div class="contact-block">
+        <h5>Social</h5>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <img src="logo-dark.png" alt="Wagner IT-Solutions">
+  </div>
+  <p>© 2026 Wagner IT-Solutions · Wien, Österreich</p>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">AGB</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .bento-card, .stat-item, .proc-step, .about-value').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+});
+
+function toggleMobile() { document.getElementById('mobileNav').classList.toggle('open'); }
+function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el))
