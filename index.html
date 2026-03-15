@@ -82,13 +82,11 @@ nav {
 .nav-logo {
   display: flex;
   align-items: center;
-  isolation: isolate;
 }
 .nav-logo img {
   height: 44px;
   width: auto;
   display: block;
-  mix-blend-mode: lighten;
 }
 
 .nav-right { display: flex; align-items: center; gap: 3rem; }
@@ -367,124 +365,82 @@ nav {
   flex-shrink: 0;
 }
 
-.bento {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(200px, auto);
-  gap: 2px;
-}
-
-.bento-card {
-  background: var(--charcoal);
-  padding: 2.5rem;
+/* ===== SERVICES LIST ===== */
+.services-list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  border: 1px solid transparent;
-}
-.bento-card:hover {
-  background: var(--dark-gray);
-  border-color: var(--teal-border);
-  transform: translateY(-2px);
 }
 
-.bento-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
-  opacity: 0;
-  transition: opacity 0.4s;
+.service-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: start;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+  gap: 2.5rem;
+  transition: background 0.3s;
+  cursor: default;
 }
-.bento-card:hover::before { opacity: 1; }
-
-.bento-card::after {
-  content: attr(data-num);
-  position: absolute;
-  bottom: -10px; right: 15px;
-  font-family: var(--heading);
-  font-size: 8rem;
-  font-weight: 900;
-  color: rgba(255,255,255,0.02);
-  line-height: 1;
-  pointer-events: none;
-  letter-spacing: -0.05em;
+.service-row:first-child {
+  border-top: 1px solid var(--border);
+}
+.service-row:hover {
+  background: var(--off-black);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin: 0 -1.5rem;
 }
 
-.bento-card .card-tag {
+.service-num {
   font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: 0.65rem;
   color: var(--teal);
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.2em;
+  padding-top: 0.35rem;
+  text-transform: uppercase;
 }
 
-.bento-card h3 {
+.service-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.service-body h3 {
   font-family: var(--heading);
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--cream);
   letter-spacing: -0.03em;
-  text-transform: uppercase;
-  margin-bottom: 0.8rem;
   line-height: 1.1;
-}
-
-.bento-card .card-desc {
-  font-size: 0.85rem;
-  color: var(--mid-gray);
-  line-height: 1.6;
-  font-weight: 300;
-  margin-bottom: 1.5rem;
-}
-
-.card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: auto;
-}
-.card-tags span {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.05em;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid var(--border);
-  color: var(--light-gray);
   text-transform: uppercase;
-  transition: all 0.3s;
-}
-.bento-card:hover .card-tags span {
-  border-color: var(--teal-border);
-  color: var(--teal);
 }
 
-.card-visual {
-  width: 48px; height: 48px;
-  border: 1px solid var(--teal-border);
+.service-body p {
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 600px;
+}
+
+.service-arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  color: var(--mid-gray);
+  transition: all 0.3s;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+.service-row:hover .service-arrow {
+  border-color: var(--teal);
   color: var(--teal);
   background: var(--teal-dim);
-  transition: all 0.3s;
 }
-.bento-card:hover .card-visual {
-  background: var(--teal);
-  color: var(--black);
-}
-
-.b-m365 { grid-column: span 7; grid-row: span 2; }
-.b-cloud { grid-column: span 5; grid-row: span 2; }
-.b-web { grid-column: span 5; grid-row: span 2; }
-.b-marketing { grid-column: span 7; grid-row: span 2; }
 
 /* ===== PROCESS ===== */
 .process-section {
@@ -748,7 +704,7 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-footer .footer-logo img { height: 28px; opacity: 0.6; mix-blend-mode: lighten; }
+footer .footer-logo img { height: 28px; opacity: 0.7; }
 footer p {
   font-size: 0.7rem;
   color: var(--mid-gray);
@@ -766,10 +722,6 @@ footer .footer-links a {
 footer .footer-links a:hover { color: var(--cream); }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1100px) {
-  .bento { grid-template-columns: 1fr 1fr; }
-  .b-m365, .b-cloud, .b-web, .b-marketing { grid-column: span 1; grid-row: span 1; }
-}
 @media (max-width: 1024px) {
   .stats-bar { grid-template-columns: 1fr 1fr; }
   .process-track { grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -786,8 +738,14 @@ footer .footer-links a:hover { color: var(--cream); }
   .hero-bottom { flex-direction: column; gap: 2rem; }
   .stat-item { padding: 1.8rem 1.5rem; }
   .services-section { padding: 5rem 1.5rem; }
-  .bento { grid-template-columns: 1fr; }
-  .b-m365, .b-cloud, .b-web, .b-marketing { grid-column: span 1; }
+  .service-row {
+    grid-template-columns: 50px 1fr auto;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+  .service-body h3 {
+    font-size: 1.2rem;
+  }
   .process-section { padding: 5rem 1.5rem; }
   .process-track { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-section { padding: 5rem 1.5rem; }
@@ -885,54 +843,52 @@ footer .footer-links a:hover { color: var(--cream); }
     <div class="services-header-right">( 4 ) Kernbereiche</div>
   </div>
 
-  <div class="bento">
-    <div class="bento-card b-m365" data-num="01">
-      <div>
-        <div class="card-visual">⬡</div>
-        <span class="card-tag">Collaboration &amp; Productivity</span>
+  <div class="services-list">
+
+    <div class="service-row">
+      <div class="service-num">01</div>
+      <div class="service-body">
         <h3>Microsoft 365</h3>
-        <p class="card-desc">Wir richten Ihren digitalen Arbeitsplatz ein und betreuen ihn laufend. Von Exchange und Teams über SharePoint bis zu Identity Management mit Entra ID und Intune – sauber konfiguriert, sicher und immer aktuell.</p>
+        <p>Wir richten Ihren digitalen Arbeitsplatz ein und betreuen ihn laufend. Von Exchange und Teams über SharePoint bis zu Identity Management mit Entra ID und Intune – sauber konfiguriert, sicher und immer aktuell.</p>
       </div>
-      <div class="card-tags">
-        <span>Teams</span><span>SharePoint</span><span>OneDrive</span><span>Exchange</span><span>Entra ID</span><span>Intune</span>
-      </div>
-    </div>
-
-    <div class="bento-card b-cloud" data-num="02">
-      <div>
-        <div class="card-visual">◈</div>
-        <span class="card-tag">Server &amp; Security</span>
-        <h3>Cloud &amp;<br>Infrastruktur</h3>
-        <p class="card-desc">Stabile Server. Sichere Daten. Maximale Verfügbarkeit. Cloud-Infrastruktur auf Enterprise-Niveau – mit Backup, Firewall, VPN und 24/7-Monitoring.</p>
-      </div>
-      <div class="card-tags">
-        <span>vServer</span><span>Azure</span><span>Backup</span><span>Firewall</span><span>VPN</span><span>Monitoring</span>
+      <div class="service-arrow">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
       </div>
     </div>
 
-    <div class="bento-card b-web" data-num="03">
-      <div>
-        <div class="card-visual">◎</div>
-        <span class="card-tag">Design &amp; Sichtbarkeit</span>
-        <h3>Web, Hosting<br>&amp; SEO</h3>
-        <p class="card-desc">Ihre digitale Visitenkarte – schnell, sicher, sichtbar. Webdesign, professionelles Hosting, DNS-Management und Suchmaschinenoptimierung für nachhaltigen Traffic.</p>
+    <div class="service-row">
+      <div class="service-num">02</div>
+      <div class="service-body">
+        <h3>Cloud &amp; Infrastruktur</h3>
+        <p>Stabile Server. Sichere Daten. Maximale Verfügbarkeit. Cloud-Infrastruktur auf Enterprise-Niveau – mit Backup, Firewall, VPN und 24/7-Monitoring.</p>
       </div>
-      <div class="card-tags">
-        <span>Webdesign</span><span>Hosting</span><span>DNS &amp; SSL</span><span>SEO</span><span>WordPress</span>
+      <div class="service-arrow">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
       </div>
     </div>
 
-    <div class="bento-card b-marketing" data-num="04">
-      <div>
-        <div class="card-visual">◇</div>
-        <span class="card-tag">Strategie &amp; Reichweite</span>
+    <div class="service-row">
+      <div class="service-num">03</div>
+      <div class="service-body">
+        <h3>Web, Hosting &amp; SEO</h3>
+        <p>Ihre digitale Visitenkarte – schnell, sicher, sichtbar. Webdesign, professionelles Hosting, DNS-Management und Suchmaschinenoptimierung für nachhaltigen Traffic.</p>
+      </div>
+      <div class="service-arrow">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
+      </div>
+    </div>
+
+    <div class="service-row">
+      <div class="service-num">04</div>
+      <div class="service-body">
         <h3>Digital Marketing</h3>
-        <p class="card-desc">LinkedIn-Strategie, Newsletter-Kampagnen und Content-Marketing – wir sorgen dafür, dass Ihre Expertise gesehen wird. Kein Agentur-Sprech, sondern messbare Ergebnisse.</p>
+        <p>LinkedIn-Strategie, Newsletter-Kampagnen und Content-Marketing – wir sorgen dafür, dass Ihre Expertise gesehen wird. Kein Agentur-Sprech, sondern messbare Ergebnisse.</p>
       </div>
-      <div class="card-tags">
-        <span>LinkedIn</span><span>Newsletter</span><span>Content</span><span>Branding</span>
+      <div class="service-arrow">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1065,7 +1021,7 @@ document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
-document.querySelectorAll('a, button, .bento-card, .stat-item, .proc-step, .about-value').forEach(el => {
+document.querySelectorAll('a, button, .service-row, .stat-item, .proc-step, .about-value').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
 });
