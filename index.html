@@ -424,22 +424,27 @@ nav {
   max-width: 600px;
 }
 
-.service-arrow {
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--border);
+.service-tags {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--mid-gray);
-  transition: all 0.3s;
-  margin-top: 0.2rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
   flex-shrink: 0;
+  padding-top: 0.3rem;
 }
-.service-row:hover .service-arrow {
-  border-color: var(--teal);
-  color: var(--teal);
-  background: var(--teal-dim);
+
+.service-tags span {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--mid-gray);
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  white-space: nowrap;
+}
+
+.service-row:hover .service-tags span {
+  opacity: 0.8;
+  color: var(--light-gray);
 }
 
 /* ===== PROCESS ===== */
@@ -739,10 +744,11 @@ footer .footer-links a:hover { color: var(--cream); }
   .stat-item { padding: 1.8rem 1.5rem; }
   .services-section { padding: 5rem 1.5rem; }
   .service-row {
-    grid-template-columns: 50px 1fr auto;
+    grid-template-columns: 50px 1fr;
     gap: 1.5rem;
     padding: 2rem 0;
   }
+  .service-tags { display: none; }
   .service-body h3 {
     font-size: 1.2rem;
   }
@@ -851,8 +857,11 @@ footer .footer-links a:hover { color: var(--cream); }
         <h3>Microsoft 365</h3>
         <p>Wir richten Ihren digitalen Arbeitsplatz ein und betreuen ihn laufend. Von Exchange und Teams über SharePoint bis zu Identity Management mit Entra ID und Intune – sauber konfiguriert, sicher und immer aktuell.</p>
       </div>
-      <div class="service-arrow">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
+      <div class="service-tags">
+        <span>#Teams</span>
+        <span>#SharePoint</span>
+        <span>#Exchange</span>
+        <span>#Intune</span>
       </div>
     </div>
 
@@ -862,8 +871,11 @@ footer .footer-links a:hover { color: var(--cream); }
         <h3>Cloud &amp; Infrastruktur</h3>
         <p>Stabile Server. Sichere Daten. Maximale Verfügbarkeit. Cloud-Infrastruktur auf Enterprise-Niveau – mit Backup, Firewall, VPN und 24/7-Monitoring.</p>
       </div>
-      <div class="service-arrow">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
+      <div class="service-tags">
+        <span>#Azure</span>
+        <span>#Backup</span>
+        <span>#Monitoring</span>
+        <span>#VPN</span>
       </div>
     </div>
 
@@ -873,8 +885,11 @@ footer .footer-links a:hover { color: var(--cream); }
         <h3>Web, Hosting &amp; SEO</h3>
         <p>Ihre digitale Visitenkarte – schnell, sicher, sichtbar. Webdesign, professionelles Hosting, DNS-Management und Suchmaschinenoptimierung für nachhaltigen Traffic.</p>
       </div>
-      <div class="service-arrow">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
+      <div class="service-tags">
+        <span>#Webdesign</span>
+        <span>#Hosting</span>
+        <span>#SEO</span>
+        <span>#WordPress</span>
       </div>
     </div>
 
@@ -884,8 +899,11 @@ footer .footer-links a:hover { color: var(--cream); }
         <h3>Digital Marketing</h3>
         <p>LinkedIn-Strategie, Newsletter-Kampagnen und Content-Marketing – wir sorgen dafür, dass Ihre Expertise gesehen wird. Kein Agentur-Sprech, sondern messbare Ergebnisse.</p>
       </div>
-      <div class="service-arrow">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
+      <div class="service-tags">
+        <span>#LinkedIn</span>
+        <span>#Newsletter</span>
+        <span>#Content</span>
+        <span>#Branding</span>
       </div>
     </div>
 
