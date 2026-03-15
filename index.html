@@ -82,14 +82,13 @@ nav {
 .nav-logo {
   display: flex;
   align-items: center;
-  line-height: 0;
+  isolation: isolate;
 }
 .nav-logo img {
   height: 44px;
   width: auto;
   display: block;
-  mix-blend-mode: screen;
-  filter: brightness(1.15);
+  mix-blend-mode: lighten;
 }
 
 .nav-right { display: flex; align-items: center; gap: 3rem; }
@@ -749,7 +748,7 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-footer .footer-logo img { height: 28px; opacity: 0.5; mix-blend-mode: screen; }
+footer .footer-logo img { height: 28px; opacity: 0.6; mix-blend-mode: lighten; }
 footer p {
   font-size: 0.7rem;
   color: var(--mid-gray);
@@ -765,20 +764,6 @@ footer .footer-links a {
   letter-spacing: 0.05em;
 }
 footer .footer-links a:hover { color: var(--cream); }
-
-/* ===== SCROLL REVEAL ===== */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-[data-reveal].revealed { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1100px) {
@@ -811,7 +796,6 @@ footer .footer-links a:hover { color: var(--cream); }
   footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
 }
 </style>
-<noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
 <body>
 
@@ -867,7 +851,7 @@ footer .footer-links a:hover { color: var(--cream); }
 </section>
 
 <!-- Stats Bar -->
-<div class="stats-bar" data-reveal>
+<div class="stats-bar">
   <div class="stat-item">
     <div class="s-num">150+</div>
     <div class="s-label">Aktive Kunden</div>
@@ -896,12 +880,12 @@ footer .footer-links a:hover { color: var(--cream); }
 
 <!-- Services — Bento Grid -->
 <section class="services-section" id="services">
-  <div class="services-header" data-reveal>
+  <div class="services-header">
     <h2>Was wir für<br><span class="teal">Sie tun.</span></h2>
     <div class="services-header-right">( 4 ) Kernbereiche</div>
   </div>
 
-  <div class="bento" data-reveal>
+  <div class="bento">
     <div class="bento-card b-m365" data-num="01">
       <div>
         <div class="card-visual">⬡</div>
@@ -954,11 +938,11 @@ footer .footer-links a:hover { color: var(--cream); }
 
 <!-- Process -->
 <section class="process-section" id="process">
-  <div class="process-header" data-reveal>
+  <div class="process-header">
     <div class="section-tag">Unser Vorgehen</div>
     <h2>So arbeiten wir<br><span class="teal">zusammen.</span></h2>
   </div>
-  <div class="process-track" data-reveal>
+  <div class="process-track">
     <div class="proc-step">
       <div class="proc-dot"></div>
       <div class="step-num">Schritt 01</div>
@@ -988,11 +972,11 @@ footer .footer-links a:hover { color: var(--cream); }
 
 <!-- About -->
 <section class="about-section" id="about">
-  <div class="about-left" data-reveal>
+  <div class="about-left">
     <div class="section-tag">Über Wagner IT-Solutions</div>
     <h2>Kein Konzern.<br><span class="teal">Echter Kontakt.</span></h2>
   </div>
-  <div class="about-right" data-reveal>
+  <div class="about-right">
     <p>
       <strong>Wagner IT-Solutions</strong> ist der IT-Dienstleister aus Wien für Unternehmen, die digital denken und handeln wollen. Wir vereinen IT-Kompetenz, Cloud-Infrastruktur und Digital Marketing zu einem ganzheitlichen Angebot.
     </p>
@@ -1033,7 +1017,7 @@ footer .footer-links a:hover { color: var(--cream); }
 <!-- Contact -->
 <section class="contact-section" id="kontakt">
   <div class="contact-inner">
-    <div data-reveal>
+    <div>
       <h2>Lassen Sie<br>uns <span class="teal">reden.</span></h2>
       <p>30 Minuten Erstgespräch – kostenlos, unverbindlich, direkt. Ob Microsoft 365, Cloud-Infrastruktur oder Website – erzählen Sie uns davon.</p>
       <a href="/cdn-cgi/l/email-protection#533c35353a3036132432343d36217e3a27207d3227" class="contact-btn">
@@ -1041,7 +1025,7 @@ footer .footer-links a:hover { color: var(--cream); }
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
       </a>
     </div>
-    <div class="contact-right" data-reveal>
+    <div class="contact-right">
       <div class="contact-block">
         <h5>E-Mail</h5>
         <a href="/cdn-cgi/l/email-protection#adc2cbcbc4cec8eddacccac3c8df80c4d9de83ccd9"><span class="__cf_email__" data-cfemail="c6a9a0a0afa5a386b1a7a1a8a3b4ebafb2b5e8a7b2">[email&#160;protected]</span></a>
@@ -1088,42 +1072,3 @@ document.querySelectorAll('a, button, .bento-card, .stat-item, .proc-step, .abou
 
 function toggleMobile() { document.getElementById('mobileNav').classList.toggle('open'); }
 function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
-
-// Robuste Scroll-Reveal Implementierung
-function revealElements() {
-  document.querySelectorAll('[data-reveal]').forEach(el => {
-    el.classList.add('revealed');
-  });
-}
-
-// Methode 1: IntersectionObserver
-if ('IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0, rootMargin: '200px 0px 200px 0px' });
-
-  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
-
-  // Fallback: nach 2 Sekunden alle noch nicht sichtbaren Elemente einblenden
-  setTimeout(revealElements, 2000);
-} else {
-  // Kein IntersectionObserver: sofort alles einblenden
-  revealElements();
-}
-
-// Sofort beim Load alle bereits im Viewport befindlichen Elemente einblenden
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    document.querySelectorAll('[data-reveal]').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight + 200) {
-        el.classList.add('revealed');
-      }
-    });
-  }, 100);
-});
