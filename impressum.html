@@ -110,6 +110,9 @@ nav {
   color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s;
 }
 .mobile-nav a:hover { color: var(--teal); }
+.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 @media (max-width: 900px) {
   nav { padding: 0 1.5rem; height: 68px; }
@@ -261,8 +264,8 @@ footer .footer-links a:hover { color: var(--cream); }
     </ul>
     <a href="/#kontakt" class="nav-cta">Anfragen</a>
   </div>
-  <button class="burger" onclick="toggleMobile()" aria-label="Menü">
-    <span></span><span></span>
+  <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menü">
+    <span></span><span></span><span></span>
   </button>
 </nav>
 
@@ -345,9 +348,22 @@ footer .footer-links a:hover { color: var(--cream); }
   </div>
   <p>&copy; 2026 Wagner IT-Solutions &middot; Wien, Österreich</p>
   <div class="footer-links">
-    <a href="/impressum">Impressum</a>
-    <a href="/datenschutz">Datenschutz</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
   </div>
 </footer>
+
+<script>
+function toggleMobile() {
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.getElementById('burger').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobileNav').classList.contains('open') ? 'hidden' : '';
+}
+function closeMobile() {
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-s
