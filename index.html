@@ -80,9 +80,10 @@ nav {
 }
 
 .nav-logo img {
-  height: 28px;
+  height: 44px;
   width: auto;
   display: block;
+  mix-blend-mode: screen;
 }
 
 .nav-right { display: flex; align-items: center; gap: 3rem; }
@@ -742,7 +743,7 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-footer .footer-logo img { height: 20px; opacity: 0.5; }
+footer .footer-logo img { height: 28px; opacity: 0.5; mix-blend-mode: screen; }
 footer p {
   font-size: 0.7rem;
   color: var(--mid-gray);
@@ -766,6 +767,12 @@ footer .footer-links a:hover { color: var(--cream); }
   transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 [data-reveal].revealed { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1100px) {
@@ -1082,5 +1089,5 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el))
