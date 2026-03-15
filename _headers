@@ -9,3 +9,6 @@
 
 /logo-light.png
   Cache-Control: public, max-age=31536000, immutable
+
+/logo-nav.png
+  Cache-Control: public, max-age=31536000, immutable
