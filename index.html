@@ -617,6 +617,135 @@ nav {
   font-family: var(--mono);
 }
 
+/* ===== REFERENZEN / CASES ===== */
+.cases-section {
+  padding: 8rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cases-header {
+  margin-bottom: 5rem;
+}
+
+.cases-header .section-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 2rem;
+}
+
+.cases-header h2 {
+  font-family: var(--heading);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--cream);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.cases-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  align-items: start;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+  gap: 2rem;
+}
+
+.case-row:last-child {
+  border-bottom: none;
+}
+
+.case-num {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--teal);
+  padding-top: 0.2rem;
+  text-transform: uppercase;
+}
+
+.case-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.case-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.case-industry {
+  font-family: var(--heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.case-service {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  background: var(--teal-dim);
+  border: 1px solid var(--teal-border);
+  padding: 0.3rem 0.7rem;
+  text-transform: uppercase;
+}
+
+.case-challenge {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--light-gray);
+  font-weight: 300;
+  max-width: 700px;
+}
+
+.case-result {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--off-white);
+  font-weight: 300;
+  max-width: 700px;
+  padding-left: 1rem;
+  border-left: 2px solid var(--teal);
+}
+
+.case-result .result-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-right: 0.4rem;
+}
+
+.case-result strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .cases-section { padding: 5rem 1.5rem; }
+  .case-row { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 0; }
+  .case-num { padding-top: 0; }
+  .case-industry { font-size: 1.1rem; }
+}
+
 /* ===== CONTACT ===== */
 .contact-section {
   padding: 8rem 3.5rem;
@@ -763,6 +892,7 @@ footer .footer-links a:hover { color: var(--cream); }
 <!-- Mobile Nav -->
 <div class="mobile-nav" id="mobileNav">
   <a href="#services" onclick="closeMobile()">Leistungen</a>
+  <a href="#referenzen" onclick="closeMobile()">Referenzen</a>
   <a href="#about" onclick="closeMobile()">Über uns</a>
   <a href="#process" onclick="closeMobile()">Vorgehen</a>
   <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
@@ -777,6 +907,7 @@ footer .footer-links a:hover { color: var(--cream); }
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#services">Leistungen</a></li>
+      <li><a href="#referenzen">Referenzen</a></li>
       <li><a href="#about">Über uns</a></li>
       <li><a href="#process">Vorgehen</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
@@ -938,6 +1069,54 @@ footer .footer-links a:hover { color: var(--cream); }
       <div class="acheck"><div class="acheck-mark">✓</div><span>Persönlicher Ansprechpartner für jedes Projekt</span></div>
       <div class="acheck"><div class="acheck-mark">✓</div><span>Transparente Festpreise, keine versteckten Kosten</span></div>
     </div>
+  </div>
+</section>
+
+<!-- Referenzen -->
+<section class="cases-section" id="referenzen">
+  <div class="cases-header reveal">
+    <div class="section-tag">Referenzen</div>
+    <h2>Was wir bereits<br><span class="teal">bewegt haben.</span></h2>
+  </div>
+  <div class="cases-list">
+
+    <div class="case-row reveal">
+      <div class="case-num">01</div>
+      <div class="case-body">
+        <div class="case-meta">
+          <span class="case-industry">Photovoltaik-Unternehmen</span>
+          <span class="case-service">#Microsoft365</span>
+        </div>
+        <p class="case-challenge">Ein Betrieb mit 18 Mitarbeitenden arbeitete mit privaten E-Mail-Adressen und lokalen Dateien — keine zentrale Struktur, ständig gingen Dokumente verloren.</p>
+        <p class="case-result"><span class="result-label">Ergebnis —</span> Exchange Online, OneDrive und SharePoint eingeführt. Onboarding neuer Mitarbeitender dauert heute <strong>20 Minuten statt Tage</strong>. Alle Daten liegen zentral und sicher.</p>
+      </div>
+    </div>
+
+    <div class="case-row reveal">
+      <div class="case-num">02</div>
+      <div class="case-body">
+        <div class="case-meta">
+          <span class="case-industry">Gastronomiebetrieb Wien</span>
+          <span class="case-service">#Azure</span>
+        </div>
+        <p class="case-challenge">Die Reservierungsplattform mit drei Standorten brach bei Stoßzeiten regelmäßig zusammen — an Spitzentagen wie Valentinstag oder Silvester ein kritisches Problem.</p>
+        <p class="case-result"><span class="result-label">Ergebnis —</span> Migration auf Azure mit automatischer Skalierung und CDN. Seit dem Go-Live: <strong>null Ausfälle</strong>, auch an den stärksten Tagen.</p>
+      </div>
+    </div>
+
+    <div class="case-row reveal">
+      <div class="case-num">03</div>
+      <div class="case-body">
+        <div class="case-meta">
+          <span class="case-industry">Kreativagentur</span>
+          <span class="case-service">#Web</span>
+          <span class="case-service">#SEO</span>
+        </div>
+        <p class="case-challenge">Keine digitale Präsenz außer Social Media — kein Blog, kein Newsletter, keine organische Sichtbarkeit. Potenzielle Kunden fanden die Agentur schlicht nicht.</p>
+        <p class="case-result"><span class="result-label">Ergebnis —</span> Blog-Website mit CMS und monatlichem Newsletter aufgebaut. Nach sechs Monaten: <strong>40 % des Traffics</strong> über organische Suche, <strong>über 300 Newsletter-Abonnenten</strong>.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
