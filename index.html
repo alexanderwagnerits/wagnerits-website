@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Wagner IT-Solutions – Cloud Consulting & Microsoft 365 aus Wien. Damit Arbeit einfacher, digitaler und professioneller wird.">
+<title>Wagner IT-Solutions — Cloud Consulting & Microsoft 365 aus Wien</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0a0a0a;
+  --off-black: #101010;
+  --charcoal: #171717;
+  --dark-gray: #222;
+  --mid-gray: #555;
+  --light-gray: #999;
+  --off-white: #e4e4e4;
+  --cream: #f0f0f0;
+  --white: #fafafa;
+  --teal: #1aa3b8;
+  --teal-bright: #22c5de;
+  --teal-dim: rgba(26,163,184,0.08);
+  --teal-border: rgba(26,163,184,0.25);
+  --teal-glow: rgba(26,163,184,0.12);
+  --heading: 'Inter', -apple-system, sans-serif;
+  --body: 'Space Grotesk', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --border: rgba(255,255,255,0.06);
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: var(--body);
+  background: var(--black);
+  color: var(--off-white);
+  overflow-x: hidden;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+::selection { background: var(--teal); color: var(--black); }
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--teal);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.15s ease, opacity 0.2s;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+.cursor.hovering {
+  transform: translate(-50%, -50%) scale(2.5);
+  background: var(--teal);
+  opacity: 0.3;
+}
+@media (pointer: coarse) { .cursor { display: none; } }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 3.5rem;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+.nav-logo img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.nav-right { display: flex; align-items: center; gap: 3rem; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--teal);
+  padding: 0.6rem 1.5rem;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.nav-cta:hover { background: var(--teal-bright); }
+
+.burger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--white); margin: 5px 0; transition: 0.3s; }
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,10,0.97);
+  z-index: 99;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.mobile-nav a:hover { color: var(--teal); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; height: 68px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .burger { display: block; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3.5rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--heading);
+  font-size: clamp(20rem, 35vw, 40rem);
+  font-weight: 900;
+  color: rgba(255,255,255,0.015);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.05em;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26,163,184,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,163,184,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-top-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideIn 0.8s ease 0.3s forwards;
+  position: relative;
+}
+
+.hero h1 {
+  font-family: var(--heading);
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  max-width: 80%;
+  text-transform: uppercase;
+  position: relative;
+}
+.hero h1 span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60px);
+  animation: wordReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero h1 span:nth-child(1) { animation-delay: 0.4s; }
+.hero h1 span:nth-child(2) { animation-delay: 0.55s; }
+.hero h1 span:nth-child(3) { animation-delay: 0.7s; }
+.hero h1 span:nth-child(4) { animation-delay: 0.85s; }
+.teal { color: var(--teal); }
+.accent { font-style: italic; }
+.teal-accent { color: var(--teal); font-style: italic; }
+
+@keyframes wordReveal { to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { to { opacity: 1; } }
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  opacity: 0;
+  animation: slideIn 1s ease 1.2s forwards;
+  position: relative;
+}
+.hero-desc {
+  max-width: 420px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--light-gray);
+  font-weight: 300;
+}
+
+/* Hero CTA */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: var(--teal);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--teal-bright);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-cta:hover::before { transform: translateX(0); }
+.hero-cta span, .hero-cta svg { position: relative; z-index: 1; }
+.hero-cta svg { transition: transform 0.3s; }
+.hero-cta:hover svg { transform: translateX(4px); }
+
+.hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+}
+.scroll-line {
+  width: 60px; height: 1px;
+  background: var(--dark-gray);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--teal);
+  animation: scrollLine 2s ease infinite;
+}
+@keyframes scrollLine { 0% { left: -100%; } 100% { left: 100%; } }
+
+/* ===== SERVICES ===== */
+.services-section {
+  padding: 8rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5rem;
+  gap: 3rem;
+}
+.services-header h2 {
+  font-family: var(--heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+.services-header-right {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 180px;
+  align-items: start;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+  gap: 2rem;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: default;
+  position: relative;
+}
+.service-row:first-child {
+  border-top: 1px solid var(--border);
+}
+.service-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal-dim), transparent);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.service-row:hover::before {
+  width: 100%;
+}
+.service-row:hover {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin: 0 -1.5rem;
+}
+
+.service-num {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--teal);
+  letter-spacing: 0.2em;
+  padding-top: 0.35rem;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.service-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.service-body h3 {
+  font-family: var(--heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.service-row:hover .service-body h3 { color: var(--teal-bright); }
+
+.service-body p {
+  font-size: 0.92rem;
+  color: var(--light-gray);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 600px;
+}
+
+.service-tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding-top: 0.35rem;
+}
+
+.service-tags span {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--light-gray);
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+
+.service-row:hover .service-tags span {
+  opacity: 1;
+  color: var(--teal);
+}
+
+/* ===== PROCESS ===== */
+.process-section {
+  padding: 8rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.process-header {
+  margin-bottom: 5rem;
+}
+.process-header .section-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+}
+.process-header h2 {
+  font-family: var(--heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+
+.process-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.process-track::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  right: 6px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--teal-border), var(--teal), var(--teal-border));
+  z-index: 0;
+}
+
+.proc-step { padding: 0 2rem; position: relative; z-index: 1; }
+.proc-dot {
+  width: 12px; height: 12px;
+  background: var(--black);
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  transition: all 0.3s;
+}
+.proc-step:hover .proc-dot {
+  background: var(--teal);
+  box-shadow: 0 0 20px var(--teal-glow);
+}
+
+.proc-step .step-num {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.proc-step h3 {
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+}
+.proc-step p {
+  font-size: 0.92rem;
+  color: var(--light-gray);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ===== ABOUT ===== */
+.about-section {
+  padding: 8rem 3.5rem;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6rem;
+  align-items: start;
+  border-bottom: 1px solid var(--border);
+}
+.about-left .section-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 2rem;
+}
+.about-left h2 {
+  font-family: var(--heading);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--cream);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.about-right { padding-top: 0.5rem; }
+.about-right > p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--light-gray);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.about-right > p strong { color: var(--cream); font-weight: 600; }
+
+.about-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+.acheck {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: var(--light-gray);
+  font-weight: 300;
+}
+.acheck-mark {
+  width: 22px; height: 22px;
+  background: var(--teal-dim);
+  border: 1px solid var(--teal-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: var(--teal);
+  flex-shrink: 0;
+  font-family: var(--mono);
+}
+
+/* ===== CONTACT ===== */
+.contact-section {
+  padding: 8rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 6rem;
+}
+.contact-section h2 {
+  font-family: var(--heading);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.contact-section .contact-inner > div:first-child > p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--light-gray);
+  font-weight: 300;
+  max-width: 500px;
+  margin-bottom: 3rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 2.5rem;
+  background: var(--teal);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.03em;
+  position: relative;
+  overflow: hidden;
+}
+.contact-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--teal-bright);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.contact-btn:hover::before { transform: translateX(0); }
+.contact-btn span, .contact-btn svg { position: relative; z-index: 1; }
+.contact-btn:hover { gap: 2rem; }
+.contact-btn svg { transition: transform 0.3s; position: relative; z-index: 1; }
+.contact-btn:hover svg { transform: translateX(4px); }
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 1rem;
+}
+.contact-block h5 {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 0.6rem;
+}
+.contact-block a, .contact-block span {
+  font-size: 1rem;
+  color: var(--cream);
+  font-weight: 400;
+  display: block;
+  transition: color 0.3s;
+}
+.contact-block a:hover { color: var(--teal); }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2.5rem 3.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .footer-logo img { height: 36px; opacity: 0.7; }
+footer p {
+  font-size: 0.7rem;
+  color: var(--mid-gray);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+}
+footer .footer-links { display: flex; gap: 2rem; }
+footer .footer-links a {
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  color: var(--mid-gray);
+  transition: color 0.3s;
+  letter-spacing: 0.05em;
+}
+footer .footer-links a:hover { color: var(--cream); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .process-track { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .process-track::before { display: none; }
+  .about-section { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .services-header { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .hero { padding: 0 1.5rem 3.5rem; }
+  .hero h1 { max-width: 100%; }
+  .hero-bottom { flex-direction: column; gap: 2rem; align-items: flex-start; }
+  .services-section { padding: 5rem 1.5rem; }
+  .service-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+  .service-tags { padding-top: 0; }
+  .service-num { display: none; }
+  .service-body h3 { font-size: 1.2rem; }
+  .process-section { padding: 5rem 1.5rem; }
+  .process-track { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-section { padding: 5rem 1.5rem; }
+  .contact-section { padding: 5rem 1.5rem; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="closeMobile()">Leistungen</a>
+  <a href="#about" onclick="closeMobile()">Über uns</a>
+  <a href="#process" onclick="closeMobile()">Vorgehen</a>
+  <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo-nav.png" alt="Wagner IT-Solutions">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#services">Leistungen</a></li>
+      <li><a href="#about">Über uns</a></li>
+      <li><a href="#process">Vorgehen</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="#kontakt" class="nav-cta">Anfragen</a>
+  </div>
+  <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menü">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg-text">W</div>
+  <div class="hero-top-tag">Cloud Consulting &amp; Digitale Lösungen — Wien</div>
+  <h1>
+    <span>Damit</span>
+    <span class="accent">Digitales</span><br>
+    <span>einfach</span>
+    <span class="teal">funktioniert.</span>
+  </h1>
+  <div class="hero-bottom">
+    <div>
+      <p class="hero-desc">
+        Microsoft Cloud, Infrastruktur, Web und Marketing — wir beraten, konzipieren und setzen um. Für Unternehmen, die eine digitale Lösung brauchen, die tatsächlich funktioniert.
+      </p>
+      <a href="#kontakt" class="hero-cta">
+        <span>Erstgespräch vereinbaren</span>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services-section" id="services">
+  <div class="services-header reveal">
+    <h2>Alles, was Ihr Unternehmen<br><span class="teal-accent">digital braucht.</span></h2>
+    <div class="services-header-right">( 4 ) Kernbereiche</div>
+  </div>
+
+  <div class="services-list">
+    <div class="service-row reveal">
+      <div class="service-num">01</div>
+      <div class="service-body">
+        <h3>Microsoft 365</h3>
+        <p>Beratung, Planung und Einführung des digitalen Arbeitsplatzes — von Exchange und Teams über SharePoint bis zu Entra ID und Intune. Auf Wunsch auch mit laufender Betreuung und Optimierung.</p>
+      </div>
+      <div class="service-tags">
+        <span>#Exchange</span>
+        <span>#Teams</span>
+        <span>#SharePoint</span>
+        <span>#EntraID</span>
+        <span>#Intune</span>
+        <span>#Defender</span>
+      </div>
+    </div>
+    <div class="service-row reveal">
+      <div class="service-num">02</div>
+      <div class="service-body">
+        <h3>Cloud &amp; Infrastruktur</h3>
+        <p>Von der Bedarfsanalyse bis zum laufenden Betrieb: Wir konzipieren Cloud-Umgebungen auf Microsoft Azure — inklusive Backup, Firewall, VPN und Monitoring. Skalierbar, sicher und auf Ihre Anforderungen zugeschnitten.</p>
+      </div>
+      <div class="service-tags">
+        <span>#Azure</span>
+        <span>#CloudMigration</span>
+        <span>#Backup</span>
+        <span>#Firewall</span>
+        <span>#VPN</span>
+        <span>#Monitoring</span>
+      </div>
+    </div>
+    <div class="service-row reveal">
+      <div class="service-num">03</div>
+      <div class="service-body">
+        <h3>Web, Hosting &amp; SEO</h3>
+        <p>Professionelle Websites auf sicherem Hosting, sauberem DNS-Setup und nachhaltiger Suchmaschinenoptimierung. Damit Ihr Unternehmen online so auftritt, wie es Ihrem Anspruch entspricht.</p>
+      </div>
+      <div class="service-tags">
+        <span>#Webdesign</span>
+        <span>#Hosting</span>
+        <span>#DNS</span>
+        <span>#SSL</span>
+        <span>#SEO</span>
+        <span>#WordPress</span>
+      </div>
+    </div>
+    <div class="service-row reveal">
+      <div class="service-num">04</div>
+      <div class="service-body">
+        <h3>Digital Marketing</h3>
+        <p>Strategische LinkedIn-Positionierung, Newsletter-Kampagnen und Content-Konzepte. Wir entwickeln eine digitale Sichtbarkeit, die zu Ihrem Unternehmen passt — datenbasiert und mit klarem Fokus auf Ergebnis.</p>
+      </div>
+      <div class="service-tags">
+        <span>#LinkedIn</span>
+        <span>#ContentStrategie</span>
+        <span>#Newsletter</span>
+        <span>#Branding</span>
+        <span>#Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process-section" id="process">
+  <div class="process-header reveal">
+    <div class="section-tag">Zusammenarbeit</div>
+    <h2>Wie eine<br><span class="teal-accent">Zusammenarbeit</span> aussieht.</h2>
+  </div>
+  <div class="process-track reveal">
+    <div class="proc-step">
+      <div class="proc-dot"></div>
+      <div class="step-num">Schritt 01</div>
+      <h3>Beratung</h3>
+      <p>Wir unterstützen Sie beim Cloud Consulting und helfen Ihnen dabei, passende Lösungen zu finden, die Ihren Arbeitsalltag wirklich erleichtern.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot"></div>
+      <div class="step-num">Schritt 02</div>
+      <h3>Planung</h3>
+      <p>Gemeinsam planen wir eine übersichtliche Cloud-Struktur, die zu Ihren Abläufen passt und sich problemlos erweitern lässt.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot"></div>
+      <div class="step-num">Schritt 03</div>
+      <h3>Implementierung</h3>
+      <p>Wir richten die benötigten Dienste ein, binden Microsoft-Lösungen sauber ein und sorgen dafür, dass alles sofort zuverlässig funktioniert.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot"></div>
+      <div class="step-num">Schritt 04</div>
+      <h3>Optimierung &amp; Support</h3>
+      <p>Wir halten Ihre Cloud-Umgebung aktuell, verbessern Abläufe und stehen Ihnen jederzeit mit direkter Unterstützung zur Seite.</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="about">
+  <div class="about-left reveal">
+    <div class="section-tag">Über uns</div>
+    <h2>Beratung auf<br><span class="teal-accent">Augenhöhe.</span></h2>
+  </div>
+  <div class="about-right reveal">
+    <p>
+      <strong>Wagner IT-Solutions</strong> verbindet technisches Know-how mit strategischem Denken. Wir begleiten Unternehmen bei der Einführung und Optimierung digitaler Lösungen — von der ersten Idee bis zum laufenden Betrieb.
+    </p>
+    <p>
+      Sie bekommen einen persönlichen Ansprechpartner, der Ihre Branche versteht und mitdenkt. Keine Warteschleifen, keine Standardlösungen — sondern ein Konzept, das zu Ihrem Unternehmen passt.
+    </p>
+    <div class="about-checks">
+      <div class="acheck"><div class="acheck-mark">✓</div><span>Microsoft Cloud Partner — M365, Azure &amp; Entra ID</span></div>
+      <div class="acheck"><div class="acheck-mark">✓</div><span>Beratung, Umsetzung &amp; Betreuung aus einer Hand</span></div>
+      <div class="acheck"><div class="acheck-mark">✓</div><span>Persönlicher Ansprechpartner für jedes Projekt</span></div>
+      <div class="acheck"><div class="acheck-mark">✓</div><span>Transparente Festpreise, keine versteckten Kosten</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="kontakt">
+  <div class="contact-inner reveal">
+    <div>
+      <h2>Lassen Sie uns über<br>Ihr <span class="teal-accent">Projekt</span> sprechen.</h2>
+      <p>30 Minuten Erstgespräch — kostenlos und unverbindlich. Wir schauen uns gemeinsam an, wo Sie stehen und was der nächste sinnvolle Schritt ist.</p>
+      <a href="mailto:alexander@wagner-its.com" class="contact-btn">
+        <span>Erstgespräch anfragen</span>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="contact-right">
+      <div class="contact-block">
+        <h5>E-Mail</h5>
+        <a href="mailto:alexander@wagner-its.com">alexander@wagner-its.com</a>
+      </div>
+      <div class="contact-block">
+        <h5>Telefon</h5>
+        <a href="tel:+436765040088">+43 676 504 00 88</a>
+      </div>
+      <div class="contact-block">
+        <h5>Standort</h5>
+        <span>Wien, Österreich</span>
+      </div>
+      <div class="contact-block">
+        <h5>Social</h5>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <img src="logo-nav.png" alt="Wagner IT-Solutions">
+  </div>
+  <p>&copy; 2026 Wagner IT-Solutions &middot; Wien, Österreich</p>
+  <div class="footer-links">
+    <a href="/impressum">Impressum</a>
+    <a href="/datenschutz">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .service-row, .proc-step').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+});
+
+// Mobile nav
+function toggleMobile() { document.getElementById('mobileNav').classList.toggle('open'); }
+function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger service rows
+document.querySelectorAll('.service-row.reveal').forEach((row, i) => {
+  row.style.transitionDelay = `${i * 0.1}s`;
+});
+</script>
+
+</body>
+</html>

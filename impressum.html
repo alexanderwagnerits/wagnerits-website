@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Impressum – Wagner IT-Solutions e.U., IT-Dienstleister aus Wien.">
+<title>Impressum — Wagner IT-Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0a0a0a;
+  --off-black: #101010;
+  --charcoal: #171717;
+  --dark-gray: #222;
+  --mid-gray: #555;
+  --light-gray: #999;
+  --off-white: #e4e4e4;
+  --cream: #f0f0f0;
+  --white: #fafafa;
+  --teal: #1aa3b8;
+  --teal-bright: #22c5de;
+  --teal-dim: rgba(26,163,184,0.08);
+  --teal-border: rgba(26,163,184,0.25);
+  --heading: 'Inter', -apple-system, sans-serif;
+  --body: 'Space Grotesk', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --border: rgba(255,255,255,0.06);
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: var(--body);
+  background: var(--black);
+  color: var(--off-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+::selection { background: var(--teal); color: var(--black); }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 3.5rem;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 44px; width: auto; display: block; }
+.nav-right { display: flex; align-items: center; gap: 3rem; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--teal);
+  padding: 0.6rem 1.5rem;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.nav-cta:hover { background: var(--teal-bright); }
+
+.burger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--white); margin: 5px 0; transition: 0.3s; }
+.mobile-nav {
+  display: none; position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,10,0.97);
+  z-index: 99; flex-direction: column;
+  justify-content: center; align-items: center; gap: 2.5rem;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--heading); font-size: 1.8rem; font-weight: 700;
+  color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s;
+}
+.mobile-nav a:hover { color: var(--teal); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; height: 68px; }
+  .nav-links, .nav-cta { display: none; }
+  .burger { display: block; }
+}
+
+/* PAGE HEADER */
+.page-header {
+  padding: 12rem 3.5rem 5rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26,163,184,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,163,184,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.page-header .section-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.page-header h1 {
+  font-family: var(--heading);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  text-transform: uppercase;
+  position: relative;
+}
+.teal { color: var(--teal); }
+
+/* LEGAL CONTENT */
+.legal-content {
+  padding: 5rem 3.5rem 8rem;
+  max-width: 820px;
+}
+.legal-content h2 {
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--light-gray);
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.legal-content p strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+.legal-content a {
+  color: var(--teal);
+  transition: color 0.3s;
+}
+.legal-content a:hover { color: var(--teal-bright); }
+.legal-content .info-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.legal-content .info-row .label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--mid-gray);
+  text-transform: uppercase;
+  padding-top: 0.15rem;
+}
+.legal-content .info-row .value {
+  color: var(--off-white);
+  font-weight: 300;
+}
+
+/* FOOTER */
+footer {
+  padding: 2.5rem 3.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .footer-logo img { height: 36px; opacity: 0.7; }
+footer p {
+  font-size: 0.7rem; color: var(--mid-gray);
+  font-family: var(--mono); letter-spacing: 0.05em;
+}
+footer .footer-links { display: flex; gap: 2rem; }
+footer .footer-links a {
+  font-size: 0.7rem; font-family: var(--mono);
+  color: var(--mid-gray); transition: color 0.3s; letter-spacing: 0.05em;
+}
+footer .footer-links a:hover { color: var(--cream); }
+
+@media (max-width: 768px) {
+  .page-header { padding: 10rem 1.5rem 3.5rem; }
+  .legal-content { padding: 3rem 1.5rem 5rem; }
+  .legal-content .info-row { grid-template-columns: 1fr; gap: 0.1rem; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="/" onclick="closeMobile()">Home</a>
+  <a href="/#services" onclick="closeMobile()">Leistungen</a>
+  <a href="/#about" onclick="closeMobile()">Über uns</a>
+  <a href="/#kontakt" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="logo-nav.png" alt="Wagner IT-Solutions">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/#services">Leistungen</a></li>
+      <li><a href="/#about">Über uns</a></li>
+      <li><a href="/#process">Vorgehen</a></li>
+      <li><a href="/#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="/#kontakt" class="nav-cta">Anfragen</a>
+  </div>
+  <button class="burger" onclick="toggleMobile()" aria-label="Menü">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="section-tag">Rechtliches</div>
+  <h1>Impress<span class="teal">um.</span></h1>
+</section>
+
+<!-- Content -->
+<div class="legal-content">
+
+  <h2>Angaben gemäß §&nbsp;25 MedienG, §&nbsp;5 (1) ECG, §&nbsp;63 GewO und §&nbsp;14 UGB</h2>
+
+  <div class="info-row">
+    <div class="label">Betreiber</div>
+    <div class="value">Wagner IT-Solutions e.U.</div>
+  </div>
+  <div class="info-row">
+    <div class="label">Firmenbuchnummer</div>
+    <div class="value">FN 609574h</div>
+  </div>
+  <div class="info-row">
+    <div class="label">Firmenbuchgericht</div>
+    <div class="value">HG Wien</div>
+  </div>
+  <div class="info-row">
+    <div class="label">Anschrift</div>
+    <div class="value">Adelheid-Popp-Gasse 14/1/36, 1220 Wien, Österreich</div>
+  </div>
+  <div class="info-row">
+    <div class="label">UID-Nummer</div>
+    <div class="value">12 731/8368</div>
+  </div>
+  <div class="info-row">
+    <div class="label">Telefon</div>
+    <div class="value"><a href="tel:+436765040088">+43 676 504 00 88</a></div>
+  </div>
+  <div class="info-row">
+    <div class="label">E-Mail</div>
+    <div class="value"><a href="/cdn-cgi/l/email-protection#a3c2cfc6dbc2cdc7c6d1e3d4c2c4cdc6d18ecad7d08dc0ccce"><span class="__cf_email__" data-cfemail="5839343d2039363c3d2a182f393f363d2a75312c2b763b3735">[email&#160;protected]</span></a></div>
+  </div>
+  <div class="info-row">
+    <div class="label">Berufsbezeichnung</div>
+    <div class="value">Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik</div>
+  </div>
+  <div class="info-row">
+    <div class="label">Rechtsvorschriften</div>
+    <div class="value"><a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener">www.ris.bka.gv.at</a></div>
+  </div>
+
+  <h2>Online-Streitbeilegung</h2>
+  <p>
+    Verbraucher mit einer Niederlassung in Österreich oder einem sonstigen Vertragsstaat der ODR-VO haben die Möglichkeit, bei Problemen hinsichtlich des entgeltlichen Kaufs von Waren oder Dienstleistungen die Online-Streitbeilegungsplattform der Europäischen Kommission in Anspruch zu nehmen:
+    <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>
+  </p>
+
+  <h2>Urheberrecht</h2>
+  <p>
+    Die auf dieser Webseite zur Verfügung gestellten Inhalte unterliegen, soweit dies rechtlich möglich ist, diversen Schutzrechten (z.&nbsp;B. dem Urheberrecht). Eine Verwendung oder Verbreitung von bereitgestelltem Material bedarf der schriftlichen Zustimmung des Webseitenbetreibers.
+  </p>
+
+  <h2>Haftungsausschluss</h2>
+  <p>
+    Der Betreiber dieser Webseite hat alle Inhalte sowie ausgehende Links mit größtmöglicher Sorgfalt kontrolliert und ausgewählt. Trotzdem wird keine Haftung für den Inhalt externer Webseiten übernommen. Für diesen ist ausschließlich deren jeweiliger Betreiber verantwortlich.
+  </p>
+  <p>
+    Sollten Sie auf ausgehende Links aufmerksam werden, welche auf eine Webseite mit rechtswidriger Tätigkeit oder rechtswidrigem Inhalt verweisen, ersuchen wir um einen entsprechenden Hinweis, um betroffene Inhalte umgehend nach §&nbsp;17 Abs.&nbsp;2 ECG zu entfernen.
+  </p>
+  <p>
+    Die Urheberrechte Dritter werden vom Betreiber dieser Webseite mit größter Sorgfalt beachtet. Sollten Sie auf eine Urheberrechtsverletzung aufmerksam werden, ersuchen wir ebenfalls um einen entsprechenden Hinweis. Bei Bekanntwerden derartiger Rechtsverletzungen wird der betroffene Inhalt umgehend entfernt.
+  </p>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <img src="logo-nav.png" alt="Wagner IT-Solutions">
+  </div>
+  <p>&copy; 2026 Wagner IT-Solutions &middot; Wien, Österreich</p>
+  <div class="footer-links">
+    <a href="/impressum">Impressum</a>
+    <a href="/datenschutz">Datenschutz</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-s
