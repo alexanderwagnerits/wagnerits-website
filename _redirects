@@ -3,6 +3,3 @@
 /impressum/              /impressum.html       301
 /datenschutz             /datenschutz.html     301
 /datenschutz/            /datenschutz.html     301
-
-# Catch-all
-/*                       /index.html           404
