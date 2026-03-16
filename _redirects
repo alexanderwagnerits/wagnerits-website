@@ -1,5 +1,1 @@
-# 301 Redirects: Slug-Varianten
-/impressum               /impressum.html       301
-/impressum/              /impressum.html       301
-/datenschutz             /datenschutz.html     301
-/datenschutz/            /datenschutz.html     301
+# leer — Cloudflare Pages handhabt .html Routing automatisch
