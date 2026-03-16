@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /cdn-cgi/
 
-Sitemap: https://wagner-its.at/sitemap.xml
+Sitemap: https://wagner-its.com/sitemap.xml
