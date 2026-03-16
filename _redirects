@@ -1,1 +1,8 @@
-# Keine Redirects nötig — Links zeigen direkt auf .html Dateien
+# 301 Redirects: Slug-Varianten
+/impressum               /impressum.html       301
+/impressum/              /impressum.html       301
+/datenschutz             /datenschutz.html     301
+/datenschutz/            /datenschutz.html     301
+
+# Catch-all
+/*                       /index.html           404
