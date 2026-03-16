@@ -707,22 +707,22 @@ nav {
 }
 
 .cases-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .case-row {
   display: grid;
-  grid-template-columns: 60px 1fr;
+  grid-template-columns: 40px 1fr;
   align-items: start;
-  padding: 3rem 0;
-  border-bottom: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--border);
   transition: background 0.3s;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .case-row:last-child {
-  border-bottom: none;
+  border-right: none;
 }
 
 .case-num {
@@ -772,7 +772,6 @@ nav {
   line-height: 1.75;
   color: var(--light-gray);
   font-weight: 300;
-  max-width: 700px;
 }
 
 .case-result {
@@ -780,7 +779,6 @@ nav {
   line-height: 1.75;
   color: var(--off-white);
   font-weight: 300;
-  max-width: 700px;
   padding-left: 1rem;
   border-left: 2px solid var(--teal);
 }
@@ -801,7 +799,9 @@ nav {
 
 @media (max-width: 768px) {
   .cases-section { padding: 5rem 1.5rem; }
-  .case-row { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 0; }
+  .cases-list { grid-template-columns: 1fr; }
+  .case-row { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 0; border-right: none; border-bottom: 1px solid var(--border); }
+  .case-row:last-child { border-bottom: none; }
   .case-num { padding-top: 0; }
   .case-industry { font-size: 1.1rem; }
 }
