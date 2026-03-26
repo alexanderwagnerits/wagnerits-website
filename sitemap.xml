@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
+  <!-- Homepage -->
   <url>
     <loc>https://wagner-its.com/</loc>
     <lastmod>2026-03-26</lastmod>
@@ -9,10 +10,62 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://wagner-its.com/logo-nav.png</image:loc>
-      <image:title>Wagner IT-Solutions Logo</image:title>
+      <image:title>Wagner IT-Solutions – IT-Beratung und Cloud Consulting Wien</image:title>
     </image:image>
   </url>
 
+  <!-- Leistungen -->
+  <url>
+    <loc>https://wagner-its.com/#microsoft-365</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://wagner-its.com/#cloud-infrastruktur</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://wagner-its.com/#webdesign-seo</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://wagner-its.com/#digital-marketing</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://wagner-its.com/#automatisierung-ki</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Weitere Sektionen -->
+  <url>
+    <loc>https://wagner-its.com/#referenzen</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wagner-its.com/#kontakt</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Rechtliche Seiten -->
   <url>
     <loc>https://wagner-its.com/impressum.html</loc>
     <lastmod>2026-03-26</lastmod>
