@@ -1,0 +1,23 @@
+# Wagner IT-Solutions
+
+> Wagner IT-Solutions ist ein IT-Dienstleister aus Wien, spezialisiert auf Microsoft 365, Cloud Consulting, Webdesign und KI-Automatisierung für Unternehmen.
+
+## Leistungen
+- Microsoft 365 & Cloud Setup (Exchange, SharePoint, Teams, OneDrive)
+- Cloud & Azure Infrastruktur (Migration, Skalierung, Entra ID)
+- Webdesign & Webentwicklung (SEO-optimiert, performant, DSGVO-konform)
+- IT-Sicherheit & Endpoint Management (Defender, Intune, Conditional Access)
+- Automatisierung & KI (Power Automate, Make, Copilot, ChatGPT)
+
+## Fakten
+- Standort: Adelheid-Popp-Gasse 14/1/36, 1220 Wien, Österreich
+- Microsoft Cloud Partner
+- Persönlicher Ansprechpartner für jedes Projekt
+- Transparente Festpreise, keine versteckten Kosten
+- Kostenloses Erstgespräch (30 Minuten)
+
+## Kontakt
+- Website: https://wagner-its.com
+- E-Mail: alexander@wagner-its.com
+- Telefon: +43 676 5040088
+- LinkedIn: https://www.linkedin.com/in/alexander-wagner-2b3a58226/
