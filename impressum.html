@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="icon" href="/favicon-512x512.png" sizes="512x512" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#0a0a0a">
 <title>Impressum — Wagner IT-Solutions | Wien</title>
 <meta name="description" content="Impressum der Wagner IT-Solutions e.U. — IT-Dienstleister aus Wien. Angaben gemäß ECG, MedienG und GewO.">
 <meta name="robots" content="noindex, follow">
@@ -103,7 +105,7 @@ nav {
 }
 .nav-cta:hover { background: var(--teal-bright); }
 
-.burger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
+.burger { display: none; cursor: pointer; background: none; border: none; padding: 10px; min-width: 44px; min-height: 44px; }
 .burger span { display: block; width: 22px; height: 1.5px; background: var(--white); margin: 5px 0; transition: 0.3s; }
 .mobile-nav {
   display: none; position: fixed;
@@ -114,7 +116,7 @@ nav {
 }
 .mobile-nav.open { display: flex; }
 .mobile-nav a {
-  font-family: var(--heading); font-size: 1.8rem; font-weight: 700;
+  font-family: var(--heading); font-size: 1.3rem; font-weight: 700;
   color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s;
 }
 .mobile-nav a:hover { color: var(--teal); }
